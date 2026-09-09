@@ -3,7 +3,7 @@ class Program
     static void Main()
     {
         while (true) {
-            Console.WriteLine("$ ");
+            Console.Write("$");
             string? x = Console.ReadLine();
             if (x == null){
                 Console.WriteLine("Input is null exiting");
