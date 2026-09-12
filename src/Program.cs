@@ -25,6 +25,10 @@ class Program
             {
                 case "exit":
                     return;
+                case "echo":
+                    string echo = string.Join(" ", command.Arguments);
+                    Console.WriteLine(echo);
+                    break;
                 default:
                     Parser.InvalidCommand(command.Name);
                     break;
