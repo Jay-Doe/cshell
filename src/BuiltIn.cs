@@ -14,7 +14,7 @@ public static class BuiltIn {
 
     }
     public static void TypeBuiltin(string cmd){
-        Console.WriteLine($"{cmd} is  a shell builtin");
+        Console.WriteLine($"{cmd} is a shell builtin");
     }
 
 
