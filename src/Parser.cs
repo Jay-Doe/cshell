@@ -4,7 +4,6 @@ using System.Collections.Frozen;
 
 public  static class Parser
 {
-    public static readonly FrozenSet<string> BUILTINS = ["type", "exit", "cd", "echo"];
 
     public static ParsedCommand? Parse(string input)
     {
@@ -17,9 +16,11 @@ public  static class Parser
             : new ParsedCommand(tokens[0], tokens[1..]);
     }
 
-    public static void InvalidCommand(string cmd){
+    public static void InvalidCommand(string cmd)
+    {
         Console.WriteLine($"{cmd}: command not found");
     }
+
 
 }
 
