@@ -19,6 +19,8 @@ class Program
             }
             var words = Lexer.Lex(x);
             var cmd = Parser.ParseWords(words);
+            var cmd_data = Parser.ResolveCmd(cmd.Name);
+            Interpreter.DispatchCommand(cmd_data, cmd);
 
         }
     }
