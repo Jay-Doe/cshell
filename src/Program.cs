@@ -7,8 +7,8 @@ class Program
 {
     static void Main()
     {
-
-        while (true)
+        var p = ProgramState.Running;
+        while (p == ProgramState.Running)
         {
             Console.Write("$ ");
             string? x = Console.ReadLine();
@@ -20,7 +20,8 @@ class Program
             var words = Lexer.Lex(x);
             var cmd = Parser.ParseWords(words);
             var cmd_data = Parser.ResolveCmd(cmd.Name);
-            Interpreter.DispatchCommand(cmd_data, cmd);
+            p = Interpreter.DispatchCommand(cmd_data, cmd);
+
 
         }
     }
