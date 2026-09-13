@@ -63,7 +63,7 @@ public static class Interpreter {
     }
     */
     private static ProgramState ExecuteNotFound(CommandData cmd){
-        Console.WriteLine($"Command not found: {cmd.Name}");
+        Console.WriteLine($"{cmd.Name}: command not found");
         return ProgramState.Running;
     }
 
