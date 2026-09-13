@@ -1,4 +1,4 @@
-namespace src.BuiltIn;
+namespace Shell.BuiltIn;
 using System.Collections.Frozen;
 
 public static class BuiltIn {
