@@ -32,14 +32,25 @@ public static class Interpreter {
                 Console.WriteLine(String.Join(" ", cmd.Args));
                 return ProgramState.Running;
             case "type":
-                var type = data.Type switch
+                foreach (var target in cmd.Args)
                 {
-                    CommandType.Builtin => "a shell builtin",
-                    CommandType.Exe => data.ExePath ?? throw new ArgumentException("Exe type shoudln't be allowed with no path provided"),
-                    CommandType.NotFound => "not found",
-                    _ => throw new ArgumentOutOfRangeException($"Cannot categorize Type {data.Type}")
-                };
-                Console.WriteLine($"{data.Name} is a {type}");
+                    var targetData = Parser.ResolveCmd(target);
+                    switch (targetData.Type)
+                    {
+                        case CommandType.Builtin:
+                            Console.WriteLine($"{target} is a shell builtin");
+                            break;
+                        case CommandType.Exe:
+                            Console.WriteLine($"{target} is {targetData.ExePath}");
+                            break;
+                        case CommandType.NotFound:
+                            Console.WriteLine($"{target}: not found");
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException(
+                                $"Cannot categorize Type {targetData.Type}");
+                    }
+                }
                 return ProgramState.Running;
         }
         throw new ArgumentOutOfRangeException($"Cannot categorize Builtin {data.Name}");

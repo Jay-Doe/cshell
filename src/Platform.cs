@@ -31,7 +31,7 @@ public static class Platform
             bool exists = File.Exists(candidate);
             if (!exists)
             {
-                return null;
+                continue;
             }
             else
             {
